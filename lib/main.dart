@@ -73,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _getBirdList() async {
     try {
-      print(await platform.invokeMethod('getBirdsList'));
       final List<dynamic> birds = await platform.invokeMethod('getBirdsList');
       print(birds);
       List<dynamic> birdsParsed = jsonDecode(utf8.decode(birds.map((e) => int.tryParse(e.toString()) ?? 0).toList()));

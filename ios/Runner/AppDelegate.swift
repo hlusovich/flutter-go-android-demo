@@ -1,5 +1,7 @@
 import UIKit
 import Flutter
+import GomobileNative
+
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -12,18 +14,21 @@ import Flutter
                                               binaryMessenger: controller.binaryMessenger)
     сhannel.setMethodCallHandler({
       [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
-  if call.method == "getBirdsList"  {
-            let oddNumbers  : Array<Int> = [91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93]
+      let instance = GomobileNativeGoMobileLib()
 
-    result(oddNumbers)
+  if call.method == "getBirdsList"  {
+
+    result(instance.getBirds())
   }
 
   else if call.method == "getRandomNumber"  {
-    result(13)
+    result(instance.randomNumber())
   }
 
   else if call.method == "getBirdInfo"  {
-    result([123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 115, 101, 101, 100, 34, 125])
+      let args = call.arguments as! Dictionary<String, String>
+          let isDebug = args["bird"]
+      result(instance.getBirdInfo(isDebug))
   }
   else {
   result(FlutterMethodNotImplemented)
