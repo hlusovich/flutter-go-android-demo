@@ -61,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _getBirdInformation() async {
     try {
-      final List<int> birdInfo = await platform.invokeMethod('getBirdInfo', {'bird': selectedBird});
+      final List<dynamic> birdInfo = await platform.invokeMethod('getBirdInfo', {'bird': selectedBird});
       print(birdInfo);
-      bird = jsonDecode(utf8.decode(birdInfo));
+      bird = jsonDecode(utf8.decode(birdInfo.map((e) => int.tryParse(e.toString()) ?? 0).toList()));
     } on PlatformException {
       print('error');
     }
@@ -73,9 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _getBirdList() async {
     try {
-      final List<int> birds = await platform.invokeMethod('getBirdsList');
+      print(await platform.invokeMethod('getBirdsList'));
+      final List<dynamic> birds = await platform.invokeMethod('getBirdsList');
       print(birds);
-      List<dynamic> birdsParsed = jsonDecode(utf8.decode(birds));
+      List<dynamic> birdsParsed = jsonDecode(utf8.decode(birds.map((e) => int.tryParse(e.toString()) ?? 0).toList()));
       birdsList = birdsParsed.map((e) => e.toString()).toList();
     } on PlatformException {
       print('error');

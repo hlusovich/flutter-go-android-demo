@@ -13,9 +13,9 @@ import Flutter
     сhannel.setMethodCallHandler({
       [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
   if call.method == "getBirdsList"  {
-            
+            let oddNumbers  : Array<Int> = [91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93]
 
-    result([91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93])
+    result(oddNumbers)
   }
 
   else if call.method == "getRandomNumber"  {
