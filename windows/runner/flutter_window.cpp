@@ -70,26 +70,26 @@ bool FlutterWindow::OnCreate() {
        
         result->Success(RandomNumber());
             }
-              else if (call.method_name().compare("getBirdInfo") == 0) {
-                 const flutter::EncodableMap *argsList = std::get_if<flutter::EncodableMap>(call.arguments()); 
-      auto bird_it = (argsList->find(flutter::EncodableValue("bird")))->second;     
-      std::string bird = static_cast<std::string>(std::get<std::string>((bird_it)));
+      else if (call.method_name().compare("getBirdInfo") == 0) {
+        const flutter::EncodableMap *argsList = std::get_if<flutter::EncodableMap>(call.arguments()); 
+        auto bird_it = (argsList->find(flutter::EncodableValue("bird")))->second;     
+        std::string bird = static_cast<std::string>(std::get<std::string>((bird_it)));
 
         if (bird == "Sparrow") {
             auto value  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 115, 101, 101, 100, 34, 125};
             result->Success(value);
         }
-        if (bird == "Pigeon") {
+         else if  (bird == "Pigeon") {
             auto value  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 118, 101, 103, 101, 116, 97, 98, 108, 101, 115, 34, 125};           
             result->Success(value);
         }
-        if (bird == "Heron") {
+         else if  (bird == "Heron") {
              auto value  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 72, 101, 114, 111, 110, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 107, 117, 110, 103, 45, 102, 117, 34, 125};
              result->Success(value);
         }
-            else {
+        else {
                 result->NotImplemented();
-            }
+        }
 
               }
       

@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gomobilefrontend/platform_service.dart';
 import 'package:gomobilefrontend/test_service.dart';
 import 'package:gomobilefrontend/user.dart';
 
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -35,11 +33,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   User? user;
-  static const platform = MethodChannel('example.com/gomobileNative');
   int _counter = 0;
   Map? bird;
   List<String> birdsList = [];
   String? selectedBird;
+  final platformService = PlatformService();
 
   @override
   initState() {
@@ -49,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _getRandomNumber() async {
     int randomNumber;
     try {
-      randomNumber = await platform.invokeMethod('getRandomNumber');
+      randomNumber = await platformService.getRandomNumber();
     } on PlatformException {
       randomNumber = 0;
     }
@@ -61,9 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _getBirdInformation() async {
     try {
-      final List<dynamic> birdInfo = await platform.invokeMethod('getBirdInfo', {'bird': selectedBird});
-      print(birdInfo);
-      bird = jsonDecode(utf8.decode(birdInfo.map((e) => int.tryParse(e.toString()) ?? 0).toList()));
+      bird = await platformService.getBirdInfo(selectedBird ?? "");
     } on PlatformException {
       print('error');
     }
@@ -73,10 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _getBirdList() async {
     try {
-      final List<dynamic> birds = await platform.invokeMethod('getBirdsList');
-      print(birds);
-      List<dynamic> birdsParsed = jsonDecode(utf8.decode(birds.map((e) => int.tryParse(e.toString()) ?? 0).toList()));
-      birdsList = birdsParsed.map((e) => e.toString()).toList();
+      birdsList = await platformService.getBirdsList();
     } on PlatformException {
       print('error');
     }
@@ -85,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _getUser() async {
-    final service = TestService();
+    final service = TestApiService();
     user = await service.getUser();
     setState(() {});
   }

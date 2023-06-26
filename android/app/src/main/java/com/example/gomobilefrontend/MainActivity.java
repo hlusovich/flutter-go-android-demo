@@ -21,7 +21,7 @@ public class MainActivity extends FlutterActivity {
                             if (call.method.equals("getRandomNumber")) {
                                 result.success(goMobileLib.randomNumber());
                             } else if (call.method.equals("getBirdInfo")) {
-                                String bird = call.argument("bird");
+                                String bird =  call.argument("bird");
                                 result.success(goMobileLib.getBirdInfo(bird));
                             } else if (call.method.equals("getBirdsList")) {
                                 result.success(goMobileLib.getBirds());
