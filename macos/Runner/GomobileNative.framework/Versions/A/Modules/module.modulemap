@@ -1,0 +1,8 @@
+framework module "GomobileNative" {
+	header "ref.h"
+    header "GomobileNative.objc.h"
+    header "Universe.objc.h"
+    header "GomobileNative.h"
+
+    export *
+}
