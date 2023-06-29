@@ -58,9 +58,15 @@ static void my_application_activate(GApplication* application) {
   gtk_widget_show(GTK_WIDGET(view));
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
-  fl_register_plugins(FL_PLUGIN_REGISTRY(view));
+  fl_register_plugins(FL_PLUGIN_REGISTRY(self->view));
 
-  gtk_widget_grab_focus(GTK_WIDGET(view));
+  g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
+  self->channel = fl_method_channel_new(
+      fl_engine_get_binary_messenger(fl_view_get_engine(view)),
+      "example.com/gomobileNative", FL_METHOD_CODEC(codec));
+  
+
+  gtk_widget_grab_focus(GTK_WIDGET(self->view));
 }
 
 // Implements GApplication::local_command_line.
