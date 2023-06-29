@@ -26,7 +26,8 @@ static void method_call_cb(FlMethodChannel *channel,
   {
   FlValue *res = fl_value_new_string("Response from Linux");
 
-  FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  fl_method_call_respond(method_call, response, &error);
     
   }
 
@@ -34,7 +35,8 @@ static void method_call_cb(FlMethodChannel *channel,
   {
   FlValue *res = fl_value_new_int(42);
 
-  FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  fl_method_call_respond(method_call, response, &error);
     
   }
 }
