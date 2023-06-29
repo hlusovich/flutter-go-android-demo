@@ -69,7 +69,7 @@ static void method_call_cb(FlMethodChannel *channel,
   if (strcmp(method, "getBirdInfo") == 0){
   FlValue* args = fl_method_call_get_args(method_call);
   FlValue* bird_it = fl_value_lookup_string(args, "bird");
-  const char* bird = fl_value_get_string(value);
+  const char* bird = fl_value_get_string(bird_it);
 
   if (strcmp(bird, "Sparrow") == 0) {
   g_autoptr(FlValue) res = fl_value_new_list();
