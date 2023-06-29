@@ -45,6 +45,14 @@ static void method_call_cb(FlMethodChannel *channel,
   fl_value_append_take(args, fl_value_new_int(111));
   fl_value_append_take(args, fl_value_new_int(110));
   fl_value_append_take(args, fl_value_new_int(34));
+  fl_value_append_take(args, fl_value_new_int(44));
+  fl_value_append_take(args, fl_value_new_int(34));
+  fl_value_append_take(args, fl_value_new_int(72));
+  fl_value_append_take(args, fl_value_new_int(101));
+  fl_value_append_take(args, fl_value_new_int(114));
+  fl_value_append_take(args, fl_value_new_int(111));
+  fl_value_append_take(args, fl_value_new_int(110));
+  fl_value_append_take(args, fl_value_new_int(34));
   fl_value_append_take(args, fl_value_new_int(93));
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(args));
   g_autoptr(GError) error = nullptr;
