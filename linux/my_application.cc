@@ -19,6 +19,9 @@ static void method_call_cb(FlMethodChannel *channel,
                            gpointer user_data)
 {
   const gchar *method = fl_method_call_get_name(method_call);
+   FlValue *res = fl_value_new_string(method);
+
+  FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   if (strcmp(method, "getBirdsList") == 0)
   {
   FlValue *res = fl_value_new_string("Response from Linux");
@@ -27,7 +30,7 @@ static void method_call_cb(FlMethodChannel *channel,
     
   }
 
-    if (strcmp(method, "getRandomNumber") == 0)
+  if (strcmp(method, "getRandomNumber") == 0)
   {
   FlValue *res = fl_value_new_int(42);
 
