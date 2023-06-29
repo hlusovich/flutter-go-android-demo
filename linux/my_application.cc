@@ -20,7 +20,7 @@ static void battery_method_call_handler(FlMethodChannel* channel,
                                         gpointer user_data) {
   g_autoptr(FlMethodResponse) response = nullptr;
   if (strcmp(fl_method_call_get_name(method_call), "getBirdsList") == 0) {
-    response = get_battery_level();
+    
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }
