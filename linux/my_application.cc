@@ -75,7 +75,7 @@ static void method_call_cb(FlMethodChannel *channel,
   int value[]  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 118, 101, 103, 101, 116, 97, 98, 108, 101, 115, 34, 125};           
 
   g_autoptr(FlValue) res = fl_value_new_list();
-  int n = sizeof(value);
+  int n = sizeof(value) / sizeof(value[0]);
 
   for (int i = 0; i < n; i++) {
    fl_value_append_take(res, fl_value_new_int(value[i]));
@@ -89,7 +89,7 @@ static void method_call_cb(FlMethodChannel *channel,
   int value[]  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 72, 101, 114, 111, 110, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 107, 117, 110, 103, 45, 102, 117, 34, 125};
 
   g_autoptr(FlValue) res = fl_value_new_list();
-  int n = sizeof(value);
+  int n = sizeof(value) / sizeof(value[0]);
 
   for (int i = 0; i < n; i++) {
    fl_value_append_take(res, fl_value_new_int(value[i]));
