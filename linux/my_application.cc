@@ -71,10 +71,10 @@ static void my_application_activate(GApplication* application) {
   fl_dart_project_set_dart_entrypoint_arguments(project, self->dart_entrypoint_arguments);
 
   FlView* view = fl_view_new(project);
-  gtk_widget_show(GTK_WIDGET(self->view));
-  gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(self->view));
+  gtk_widget_show(GTK_WIDGET(view));
+  gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
-  fl_register_plugins(FL_PLUGIN_REGISTRY(self->view));
+  fl_register_plugins(FL_PLUGIN_REGISTRY(view));
 
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   self->channel = fl_method_channel_new(
@@ -83,7 +83,7 @@ static void my_application_activate(GApplication* application) {
   fl_method_channel_set_method_call_handler(
       self->channel, battery_method_call_handler, self, nullptr);
 
-  gtk_widget_grab_focus(GTK_WIDGET(self->view));
+  gtk_widget_grab_focus(GTK_WIDGET(view));
 }
 
 // Implements GApplication::local_command_line.
