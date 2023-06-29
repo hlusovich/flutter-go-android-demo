@@ -4,7 +4,7 @@
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
 #endif
-
+#include <cstdlib>
 #include "flutter/generated_plugin_registrant.h"
 
 struct _MyApplication {
@@ -13,6 +13,10 @@ struct _MyApplication {
 };
 
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
+
+static int getRandomNumber() {
+    return rand() % 50;
+}
 
 static void method_call_cb(FlMethodChannel *channel,
                            FlMethodCall *method_call,
@@ -60,14 +64,12 @@ static void method_call_cb(FlMethodChannel *channel,
     
   }
 
-  if (strcmp(method, "getRandomNumber") == 0)
-  {
-  FlValue *res = fl_value_new_int(42);
+  if (strcmp(method, "getRandomNumber") == 0){
+  FlValue *res = fl_value_new_int(getRandomNumber());
 
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   g_autoptr(GError) error = nullptr;
-  fl_method_call_respond(method_call, response, &error);
-    
+  fl_method_call_respond(method_call, response, &error); 
   }
 }
 // Implements GApplication::activate.
