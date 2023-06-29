@@ -67,7 +67,6 @@ static void method_call_cb(FlMethodChannel *channel,
   fl_method_call_respond(method_call, response, &error); 
   }
   if (strcmp(method, "getBirdInfo") == 0){
-  FlValue* args = fl_method_call_get_args(method_call);
 
   
   g_autoptr(FlValue) res = fl_value_new_list();
