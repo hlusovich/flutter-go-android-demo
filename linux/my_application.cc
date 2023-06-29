@@ -78,13 +78,26 @@ static void my_application_activate(GApplication* application) {
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
+  FlEngine *engine = fl_view_get_engine(view);
 
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
-  self->channel = fl_method_channel_new(
-      fl_engine_get_binary_messenger(fl_view_get_engine(view)),
-      "example.com/gomobileNative", FL_METHOD_CODEC(codec));
+    g_autoptr(FlBinaryMessenger) messenger = fl_engine_get_binary_messenger(engine);
+
+  g_autoptr(FlMethodChannel) channel =
+      fl_method_channel_new(messenger,
+                            "example.com/gomobileNative",  
+                            FL_METHOD_CODEC(codec));
+  fl_method_channel_set_method_call_handler(channel, 
+  // Method which will be called when we call invokeMethod() from dart
+                                            method_call_cb,  
+                                            g_object_ref(view),
+                                            g_object_unref);
+
   fl_method_channel_set_method_call_handler(
       self->channel, platform_method_call_handler, self, nullptr);
+
+
+  // END OF OUR CUSTOM BLOCK
 
   gtk_widget_grab_focus(GTK_WIDGET(view));
 }
