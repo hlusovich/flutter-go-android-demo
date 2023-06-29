@@ -21,7 +21,7 @@ static void battery_method_call_handler(FlMethodChannel* channel,
   g_autoptr(FlMethodResponse) response = nullptr;
   if (strcmp(fl_method_call_get_name(method_call), "getBirdsList") == 0) {
       FlValue *res = fl_value_new_string("Response from Linux");
-        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+        FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }
