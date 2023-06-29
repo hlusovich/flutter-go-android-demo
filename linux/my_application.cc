@@ -58,7 +58,7 @@ static void method_call_cb(FlMethodChannel *channel,
   fl_value_append_take(res, fl_value_new_int(110));
   fl_value_append_take(res, fl_value_new_int(34));
   fl_value_append_take(res, fl_value_new_int(93));
-  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(args));
+  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   g_autoptr(GError) error = nullptr;
   fl_method_call_respond(method_call, response, &error);
     
@@ -105,7 +105,7 @@ static void method_call_cb(FlMethodChannel *channel,
   fl_value_append_take(res, fl_value_new_int(110));
   fl_value_append_take(res, fl_value_new_int(34));
   fl_value_append_take(res, fl_value_new_int(93));
-  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(args));
+  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   g_autoptr(GError) error = nullptr;
   fl_method_call_respond(method_call, response, &error); 
   }
