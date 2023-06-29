@@ -109,29 +109,22 @@ static void method_call_cb(FlMethodChannel *channel,
   fl_value_append_take(res, fl_value_new_int(100));
   fl_value_append_take(res, fl_value_new_int(111));
   fl_value_append_take(res, fl_value_new_int(101));
-
-   fl_value_append_take(res, fl_value_new_int(115));
+  fl_value_append_take(res, fl_value_new_int(115));
   fl_value_append_take(res, fl_value_new_int(34));
   fl_value_append_take(res, fl_value_new_int(58));
   fl_value_append_take(res, fl_value_new_int(34));
-
-
-   fl_value_append_take(res, fl_value_new_int(108));
+  fl_value_append_take(res, fl_value_new_int(108));
   fl_value_append_take(res, fl_value_new_int(105));
   fl_value_append_take(res, fl_value_new_int(107));
   fl_value_append_take(res, fl_value_new_int(101));
-
-   fl_value_append_take(res, fl_value_new_int(115));
+  fl_value_append_take(res, fl_value_new_int(115));
   fl_value_append_take(res, fl_value_new_int(32));
   fl_value_append_take(res, fl_value_new_int(116));
   fl_value_append_take(res, fl_value_new_int(111));
-
-  
-   fl_value_append_take(res, fl_value_new_int(32));
+  fl_value_append_take(res, fl_value_new_int(32));
   fl_value_append_take(res, fl_value_new_int(101));
   fl_value_append_take(res, fl_value_new_int(97));
   fl_value_append_take(res, fl_value_new_int(116));
-
   fl_value_append_take(res, fl_value_new_int(32));
   fl_value_append_take(res, fl_value_new_int(115));
   fl_value_append_take(res, fl_value_new_int(101));
