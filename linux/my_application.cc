@@ -1,10 +1,13 @@
 #include "my_application.h"
 #include <initializer_list>
+#include <cstdlib>
+#include <string>
 #include <flutter_linux/flutter_linux.h>
+
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
 #endif
-#include <cstdlib>
+
 #include "flutter/generated_plugin_registrant.h"
 
 struct _MyApplication {
