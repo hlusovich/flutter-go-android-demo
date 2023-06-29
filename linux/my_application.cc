@@ -24,10 +24,28 @@ static void method_call_cb(FlMethodChannel *channel,
   FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   if (strcmp(method, "getBirdsList") == 0)
   {
-  auto value = {fl_value_new_int(91), fl_value_new_int(34), fl_value_new_int(83), fl_value_new_int(112), fl_value_new_int(97), fl_value_new_int(114), fl_value_new_int(114), fl_value_new_int(111), fl_value_new_int(119), fl_value_new_int(34), fl_value_new_int(44), fl_value_new_int(34), fl_value_new_int(80), fl_value_new_int(105), fl_value_new_int(103), fl_value_new_int(101), fl_value_new_int(111), fl_value_new_int(110), fl_value_new_int(34), fl_value_new_int(44), fl_value_new_int(34), fl_value_new_int(72), fl_value_new_int(101), fl_value_new_int(114), fl_value_new_int(111), fl_value_new_int(110), fl_value_new_int(34), fl_value_new_int(93)}; 
 
-  g_autoptr(FlValue) args = fl_value_new_list(value);
-
+  g_autoptr(FlValue) args = fl_value_new_list();
+  fl_value_append_take(args, fl_value_new_int(91));
+  fl_value_append_take(args, fl_value_new_int(34));
+  fl_value_append_take(args, fl_value_new_int(83));
+  fl_value_append_take(args, fl_value_new_int(112));
+  fl_value_append_take(args, fl_value_new_int(97));
+  fl_value_append_take(args, fl_value_new_int(114));
+  fl_value_append_take(args, fl_value_new_int(114));
+  fl_value_append_take(args, fl_value_new_int(111));
+  fl_value_append_take(args, fl_value_new_int(119));
+  fl_value_append_take(args, fl_value_new_int(34));
+  fl_value_append_take(args, fl_value_new_int(44));
+  fl_value_append_take(args, fl_value_new_int(34));
+  fl_value_append_take(args, fl_value_new_int(80));
+  fl_value_append_take(args, fl_value_new_int(105));
+  fl_value_append_take(args, fl_value_new_int(103));
+  fl_value_append_take(args, fl_value_new_int(101));
+  fl_value_append_take(args, fl_value_new_int(111));
+  fl_value_append_take(args, fl_value_new_int(110));
+  fl_value_append_take(args, fl_value_new_int(34));
+  fl_value_append_take(args, fl_value_new_int(93));
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(args));
   g_autoptr(GError) error = nullptr;
   fl_method_call_respond(method_call, response, &error);
