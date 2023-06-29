@@ -2,7 +2,6 @@
 
 #include <flutter_linux/flutter_linux.h>
 #include <math.h>
-#include <upower.h>
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
 #endif
@@ -77,8 +76,8 @@ static void my_application_activate(GApplication* application) {
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
-   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
-  self->channel = fl_method_channel_new(
+  g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
+   self->channel = fl_method_channel_new(
       fl_engine_get_binary_messenger(fl_view_get_engine(view)),
       "example.com/gomobileNative", FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(
@@ -107,7 +106,7 @@ static gboolean my_application_local_command_line(GApplication* application, gch
 
 // Implements GObject::dispose.
 static void my_application_dispose(GObject* object) {
-   MyApplication* self = MY_APPLICATION(object);
+  MyApplication* self = MY_APPLICATION(object);
   g_clear_pointer(&self->dart_entrypoint_arguments, g_strfreev);
   g_clear_object(&self->channel);
   G_OBJECT_CLASS(my_application_parent_class)->dispose(object);
