@@ -87,11 +87,6 @@ static void my_application_activate(GApplication* application) {
       fl_method_channel_new(messenger,
                             "example.com/gomobileNative",  
                             FL_METHOD_CODEC(codec));
-  fl_method_channel_set_method_call_handler(channel, 
-  // Method which will be called when we call invokeMethod() from dart
-                                            method_call_cb,  
-                                            g_object_ref(view),
-                                            g_object_unref);
 
   fl_method_channel_set_method_call_handler(
       self->channel, platform_method_call_handler, self, nullptr);
