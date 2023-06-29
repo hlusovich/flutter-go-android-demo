@@ -15,9 +15,7 @@ struct _MyApplication {
 
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 
-static FlMethodResponse* get_battery_level() {
-  return FL_METHOD_RESPONSE(fl_method_success_response_new("result"));
-}
+
 
 static void platform_method_call_handler(FlMethodChannel* channel,
                                         FlMethodCall* method_call,
@@ -25,7 +23,7 @@ static void platform_method_call_handler(FlMethodChannel* channel,
   g_autoptr(FlMethodResponse) response = nullptr;
   if (strcmp(fl_method_call_get_name(method_call), "getBirdsList") == 0) {
         auto value = {91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93}; 
-        response = get_battery_level();
+        FL_METHOD_RESPONSE(fl_method_success_response_new(value));
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }

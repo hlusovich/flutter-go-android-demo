@@ -11,6 +11,7 @@
     "xlocmon": "cpp",
     "xtr1common": "cpp",
     "xutility": "cpp",
-    "initializer_list": "cpp"
+    "initializer_list": "cpp",
+    "xlocale": "cpp"
   }
 }
