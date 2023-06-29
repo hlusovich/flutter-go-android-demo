@@ -15,13 +15,17 @@ struct _MyApplication {
 
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 
-static void battery_method_call_handler(FlMethodChannel* channel,
+static FlMethodResponse* get_battery_level() {
+  return FL_METHOD_RESPONSE(fl_method_success_response_new("result"));
+}
+
+static void platform_method_call_handler(FlMethodChannel* channel,
                                         FlMethodCall* method_call,
                                         gpointer user_data) {
   g_autoptr(FlMethodResponse) response = nullptr;
   if (strcmp(fl_method_call_get_name(method_call), "getBirdsList") == 0) {
         auto value = {91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93}; 
-        FL_METHOD_RESPONSE(fl_method_success_response_new(value));
+        response = get_battery_level();
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }
@@ -82,7 +86,7 @@ static void my_application_activate(GApplication* application) {
       fl_engine_get_binary_messenger(fl_view_get_engine(view)),
       "example.com/gomobileNative", FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(
-      self->channel, battery_method_call_handler, self, nullptr);
+      self->channel, platform_method_call_handler, self, nullptr);
 
   gtk_widget_grab_focus(GTK_WIDGET(view));
 }
