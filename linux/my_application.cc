@@ -1,13 +1,10 @@
 #include "my_application.h"
 #include <initializer_list>
-#include <cstdlib>
-#include <string>
 #include <flutter_linux/flutter_linux.h>
-
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
 #endif
-
+#include <cstdlib>
 #include "flutter/generated_plugin_registrant.h"
 
 struct _MyApplication {
@@ -76,9 +73,9 @@ static void method_call_cb(FlMethodChannel *channel,
   }
   if (strcmp(method, "getBirdInfo") == 0){
   FlValue* args = fl_method_call_get_args(method_call);
-  std::string *bird = fl_value_lookup_string(args, "bird");
+  std::string bird = fl_value_lookup_string(args, "bird");
 
-  if (strcmp(bird, "Sparrow") == 0) {
+  if (bird == "Sparrow") {
   g_autoptr(FlValue) res = fl_value_new_list();
   fl_value_append_take(res, fl_value_new_int(91));
   fl_value_append_take(res, fl_value_new_int(34));
