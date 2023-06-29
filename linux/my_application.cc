@@ -70,11 +70,12 @@ static void method_call_cb(FlMethodChannel *channel,
   FlValue* args = fl_method_call_get_args(method_call);
   FlValue* bird_it = fl_value_lookup_string(args, "bird");
   const char* bird = fl_value_get_string(bird_it);
+            auto value  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 115, 101, 101, 100, 34, 125};
 
   if (strcmp(bird, "Sparrow") == 0) {
   g_autoptr(FlValue) res = fl_value_new_list();
   fl_value_append_take(res, fl_value_new_int(123));
-  fl_value_append_take(res, fl_value_new_int(34));
+  fl_value_append_take(res, fl_value_new_int(value[1]));
   fl_value_append_take(res, fl_value_new_int(98));
   fl_value_append_take(res, fl_value_new_int(105));
   fl_value_append_take(res, fl_value_new_int(114));
