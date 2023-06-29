@@ -14,6 +14,36 @@ struct _MyApplication {
 
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 
+static void method_call_cb(FlMethodChannel *channel,
+                           FlMethodCall *method_call,
+                           gpointer user_data)
+{
+  const gchar *method = fl_method_call_get_name(method_call);
+  if (strcmp(method, "getBirdsList") == 0)
+  {
+ FlValue *res = fl_value_new_string("Response from Linux");
+
+        // Send it back to Dart
+        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+    FlValue *text_value = fl_value_lookup_string(args, "name");
+
+    // Check if returned value is either null or string
+    if (text_value == nullptr ||
+        fl_value_get_type(text_value) != FL_VALUE_TYPE_STRING)
+    {
+        // Previous error handling
+    } else {
+
+
+        // Create response
+        FlValue *res = fl_value_new_string("Response from Linux");
+
+        // Send it back to Dart
+        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+    }
+
+  }
+}
 // Implements GApplication::activate.
 static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
@@ -108,37 +138,6 @@ static void my_application_class_init(MyApplicationClass* klass) {
   G_APPLICATION_CLASS(klass)->activate = my_application_activate;
   G_APPLICATION_CLASS(klass)->local_command_line = my_application_local_command_line;
   G_OBJECT_CLASS(klass)->dispose = my_application_dispose;
-}
-
-static void method_call_cb(FlMethodChannel *channel,
-                           FlMethodCall *method_call,
-                           gpointer user_data)
-{
-  const gchar *method = fl_method_call_get_name(method_call);
-  if (strcmp(method, "getBirdsList") == 0)
-  {
- FlValue *res = fl_value_new_string("Response from Linux");
-
-        // Send it back to Dart
-        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
-    FlValue *text_value = fl_value_lookup_string(args, "name");
-
-    // Check if returned value is either null or string
-    if (text_value == nullptr ||
-        fl_value_get_type(text_value) != FL_VALUE_TYPE_STRING)
-    {
-        // Previous error handling
-    } else {
-
-
-        // Create response
-        FlValue *res = fl_value_new_string("Response from Linux");
-
-        // Send it back to Dart
-        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
-    }
-
-  }
 }
 
 static void my_application_init(MyApplication* self) {}
