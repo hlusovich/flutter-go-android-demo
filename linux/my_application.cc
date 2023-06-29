@@ -25,22 +25,7 @@ static void method_call_cb(FlMethodChannel *channel,
 
         // Send it back to Dart
         g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
-    FlValue *text_value = fl_value_lookup_string(args, "name");
-
-    // Check if returned value is either null or string
-    if (text_value == nullptr ||
-        fl_value_get_type(text_value) != FL_VALUE_TYPE_STRING)
-    {
-        // Previous error handling
-    } else {
-
-
-        // Create response
-        FlValue *res = fl_value_new_string("Response from Linux");
-
-        // Send it back to Dart
-        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
-    }
+    
 
   }
 }
