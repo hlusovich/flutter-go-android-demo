@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 5.0,
                 child: Padding(
                   padding: const EdgeInsets.all(28.0),
-                  child: Text(bird?['birdType']),
+                  child: Text(bird?['birdType'] + " " + bird?['what it does']),
                 ),
               ),
             const Text(
