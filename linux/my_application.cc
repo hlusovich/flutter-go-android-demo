@@ -67,8 +67,10 @@ static void method_call_cb(FlMethodChannel *channel,
   fl_method_call_respond(method_call, response, &error); 
   }
   if (strcmp(method, "getBirdInfo") == 0){
+  FlValue* args = fl_method_call_get_args(method_call);
+  auto *bird = fl_value_lookup_string(args, "bird");
 
-  
+  if (strcmp(bird, "Sparrow")) {
   g_autoptr(FlValue) res = fl_value_new_list();
   fl_value_append_take(res, fl_value_new_int(91));
   fl_value_append_take(res, fl_value_new_int(34));
@@ -101,7 +103,7 @@ static void method_call_cb(FlMethodChannel *channel,
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   g_autoptr(GError) error = nullptr;
   fl_method_call_respond(method_call, response, &error); 
-  
+  }
   }
 }
 // Implements GApplication::activate.
