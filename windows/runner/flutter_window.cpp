@@ -61,16 +61,13 @@ bool FlutterWindow::OnCreate() {
       [](const flutter::MethodCall<>& call,
          std::unique_ptr<flutter::MethodResult<>> result) {
         if (call.method_name().compare("getBirdsList") == 0) {
-
         auto value = {91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93}; 
         result->Success(value);
-            }
-              else if (call.method_name().compare("getRandomNumber") == 0) {
-           std::string test = "example.com/gomobileNative";
-       
+          }
+        else if (call.method_name().compare("getRandomNumber") == 0) {
         result->Success(RandomNumber());
-            }
-      else if (call.method_name().compare("getBirdInfo") == 0) {
+          }
+        else if (call.method_name().compare("getBirdInfo") == 0) {
         const flutter::EncodableMap *argsList = std::get_if<flutter::EncodableMap>(call.arguments()); 
         auto bird_it = (argsList->find(flutter::EncodableValue("bird")))->second;     
         std::string bird = static_cast<std::string>(std::get<std::string>((bird_it)));
