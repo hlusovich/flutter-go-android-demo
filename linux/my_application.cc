@@ -24,7 +24,7 @@ static void method_call_cb(FlMethodChannel *channel,
   FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   if (strcmp(method, "getBirdsList") == 0)
   {
- g_autoptr(FlValue) args = fl_value_new_list();
+ g_autoptr(FlValue) args = fl_value_new_list({91, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 72, 101, 114, 111, 110, 34, 93});
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(args));
   g_autoptr(GError) error = nullptr;
   fl_method_call_respond(method_call, response, &error);
