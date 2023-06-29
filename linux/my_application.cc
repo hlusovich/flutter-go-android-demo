@@ -73,34 +73,72 @@ static void method_call_cb(FlMethodChannel *channel,
 
   if (strcmp(bird, "Sparrow") == 0) {
   g_autoptr(FlValue) res = fl_value_new_list();
-  fl_value_append_take(res, fl_value_new_int(91));
+   
+  fl_value_append_take(res, fl_value_new_int(123));
+  fl_value_append_take(res, fl_value_new_int(34));
+  fl_value_append_take(res, fl_value_new_int(98));
+  fl_value_append_take(res, fl_value_new_int(105));
+  fl_value_append_take(res, fl_value_new_int(114));
+  fl_value_append_take(res, fl_value_new_int(100));
+  fl_value_append_take(res, fl_value_new_int(121));
+  fl_value_append_take(res, fl_value_new_int(112));
+  fl_value_append_take(res, fl_value_new_int(101));
+  fl_value_append_take(res, fl_value_new_int(34));
+  fl_value_append_take(res, fl_value_new_int(58));
+
   fl_value_append_take(res, fl_value_new_int(34));
   fl_value_append_take(res, fl_value_new_int(83));
   fl_value_append_take(res, fl_value_new_int(112));
   fl_value_append_take(res, fl_value_new_int(97));
   fl_value_append_take(res, fl_value_new_int(114));
-  fl_value_append_take(res, fl_value_new_int(114));
+
   fl_value_append_take(res, fl_value_new_int(111));
   fl_value_append_take(res, fl_value_new_int(119));
   fl_value_append_take(res, fl_value_new_int(34));
   fl_value_append_take(res, fl_value_new_int(44));
   fl_value_append_take(res, fl_value_new_int(34));
-  fl_value_append_take(res, fl_value_new_int(80));
+  fl_value_append_take(res, fl_value_new_int(119));
+  fl_value_append_take(res, fl_value_new_int(104));
+  fl_value_append_take(res, fl_value_new_int(97));
+  fl_value_append_take(res, fl_value_new_int(116));
+  fl_value_append_take(res, fl_value_new_int(32));
   fl_value_append_take(res, fl_value_new_int(105));
-  fl_value_append_take(res, fl_value_new_int(103));
-  fl_value_append_take(res, fl_value_new_int(101));
+  fl_value_append_take(res, fl_value_new_int(116));
+
+  fl_value_append_take(res, fl_value_new_int(32));
+  fl_value_append_take(res, fl_value_new_int(100));
   fl_value_append_take(res, fl_value_new_int(111));
-  fl_value_append_take(res, fl_value_new_int(110));
-  fl_value_append_take(res, fl_value_new_int(34));
-  fl_value_append_take(res, fl_value_new_int(44));
-  fl_value_append_take(res, fl_value_new_int(34));
-  fl_value_append_take(res, fl_value_new_int(72));
   fl_value_append_take(res, fl_value_new_int(101));
-  fl_value_append_take(res, fl_value_new_int(114));
-  fl_value_append_take(res, fl_value_new_int(111));
-  fl_value_append_take(res, fl_value_new_int(110));
+
+   fl_value_append_take(res, fl_value_new_int(115));
   fl_value_append_take(res, fl_value_new_int(34));
-  fl_value_append_take(res, fl_value_new_int(93));
+  fl_value_append_take(res, fl_value_new_int(58));
+  fl_value_append_take(res, fl_value_new_int(34));
+
+
+   fl_value_append_take(res, fl_value_new_int(108));
+  fl_value_append_take(res, fl_value_new_int(105));
+  fl_value_append_take(res, fl_value_new_int(107));
+  fl_value_append_take(res, fl_value_new_int(101));
+
+   fl_value_append_take(res, fl_value_new_int(115));
+  fl_value_append_take(res, fl_value_new_int(32));
+  fl_value_append_take(res, fl_value_new_int(116));
+  fl_value_append_take(res, fl_value_new_int(111));
+
+  
+   fl_value_append_take(res, fl_value_new_int(32));
+  fl_value_append_take(res, fl_value_new_int(101));
+  fl_value_append_take(res, fl_value_new_int(97));
+  fl_value_append_take(res, fl_value_new_int(116));
+
+  fl_value_append_take(res, fl_value_new_int(32));
+  fl_value_append_take(res, fl_value_new_int(115));
+  fl_value_append_take(res, fl_value_new_int(101));
+  fl_value_append_take(res, fl_value_new_int(101));
+  fl_value_append_take(res, fl_value_new_int(100));
+  fl_value_append_take(res, fl_value_new_int(34));
+  fl_value_append_take(res, fl_value_new_int(125));
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
   g_autoptr(GError) error = nullptr;
   fl_method_call_respond(method_call, response, &error); 
