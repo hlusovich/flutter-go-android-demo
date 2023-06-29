@@ -23,12 +23,7 @@ static void method_call_cb(FlMethodChannel *channel,
                            gpointer user_data)
 {
   const gchar *method = fl_method_call_get_name(method_call);
-   FlValue *res = fl_value_new_string(method);
-
-  FL_METHOD_RESPONSE(fl_method_success_response_new(res));
-  if (strcmp(method, "getBirdsList") == 0)
-  {
-
+  if (strcmp(method, "getBirdsList") == 0){
   g_autoptr(FlValue) res = fl_value_new_list();
   fl_value_append_take(res, fl_value_new_int(91));
   fl_value_append_take(res, fl_value_new_int(34));
@@ -73,9 +68,9 @@ static void method_call_cb(FlMethodChannel *channel,
   }
   if (strcmp(method, "getBirdInfo") == 0){
   FlValue* args = fl_method_call_get_args(method_call);
-  std::string bird = fl_value_lookup_string(args, "bird");
+  FlValue(gchar*) *bird = fl_value_lookup_string(args, "bird");
 
-  if (bird == "Sparrow") {
+  if (strcmp(method, "Sparrow")) {
   g_autoptr(FlValue) res = fl_value_new_list();
   fl_value_append_take(res, fl_value_new_int(91));
   fl_value_append_take(res, fl_value_new_int(34));
