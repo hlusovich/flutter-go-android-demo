@@ -22,9 +22,7 @@ static void method_call_cb(FlMethodChannel *channel,
   if (strcmp(method, "getBirdsList") == 0)
   {
  FlValue *res = fl_value_new_string("Response from Linux");
-
-        // Send it back to Dart
-        g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+ FL_METHOD_RESPONSE(fl_method_success_response_new(res));
     
 
   }
