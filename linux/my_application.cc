@@ -70,9 +70,36 @@ static void method_call_cb(FlMethodChannel *channel,
   FlValue* args = fl_method_call_get_args(method_call);
   FlValue* bird_it = fl_value_lookup_string(args, "bird");
   const char* bird = fl_value_get_string(bird_it);
-  int value[]  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 115, 101, 101, 100, 34, 125};
 
   if (strcmp(bird, "Sparrow") == 0) {
+  int value[]  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 80, 105, 103, 101, 111, 110, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 118, 101, 103, 101, 116, 97, 98, 108, 101, 115, 34, 125};           
+
+  g_autoptr(FlValue) res = fl_value_new_list();
+  int n = sizeof(value);
+  for (i = 0; i < n; i++) {
+   fl_value_append_take(res, fl_value_new_int(value[i]));
+  }
+  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  g_autoptr(GError) error = nullptr;
+  fl_method_call_respond(method_call, response, &error); 
+  }
+
+   if (strcmp(bird, "Heron") == 0) {
+  int value[]  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 72, 101, 114, 111, 110, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 107, 117, 110, 103, 45, 102, 117, 34, 125};
+
+  g_autoptr(FlValue) res = fl_value_new_list();
+  int n = sizeof(value);
+  for (i = 0; i < n; i++) {
+   fl_value_append_take(res, fl_value_new_int(value[i]));
+  }
+  g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  g_autoptr(GError) error = nullptr;
+  fl_method_call_respond(method_call, response, &error); 
+  }
+
+   if (strcmp(bird, "Pigeon") == 0) {
+  int value[]  = {123, 34, 98, 105, 114, 100, 84, 121, 112, 101, 34, 58, 34, 83, 112, 97, 114, 114, 111, 119, 34, 44, 34, 119, 104, 97, 116, 32, 105, 116, 32, 100, 111, 101, 115, 34, 58, 34, 108, 105, 107, 101, 115, 32, 116, 111, 32, 101, 97, 116, 32, 115, 101, 101, 100, 34, 125};
+
   g_autoptr(FlValue) res = fl_value_new_list();
   int n = sizeof(value);
   for (i = 0; i < n; i++) {
