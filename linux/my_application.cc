@@ -21,11 +21,18 @@ static void method_call_cb(FlMethodChannel *channel,
   const gchar *method = fl_method_call_get_name(method_call);
   if (strcmp(method, "getBirdsList") == 0)
   {
- FlValue *res = fl_value_new_string("Response from Linux");
+  FlValue *res = fl_value_new_string("Response from Linux");
 
- FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+  FL_METHOD_RESPONSE(fl_method_success_response_new(res));
     
+  }
 
+    if (strcmp(method, "getRandomNumber") == 0)
+  {
+  FlValue *res = fl_value_new_int(42);
+
+  FL_METHOD_RESPONSE(fl_method_success_response_new(res));
+    
   }
 }
 // Implements GApplication::activate.
