@@ -16,7 +16,6 @@ class PlatformService {
 
   Future<List<String>> getBirdsList() async {
     final List<dynamic> birds = await platformChannel.invokeMethod("getBirdsList");
-    print(birds);
     final birdsParsed = jsonDecode(utf8.decode(birds.map((e) => int.tryParse(e.toString()) ?? 0).toList()));
     final List<String> result = [];
     birdsParsed.forEach((e) => result.add(e.toString()));
