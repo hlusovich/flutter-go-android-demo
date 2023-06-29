@@ -68,7 +68,9 @@ static void method_call_cb(FlMethodChannel *channel,
   }
   if (strcmp(method, "getBirdInfo") == 0){
   FlValue* args = fl_method_call_get_args(method_call);
-  auto *bird = fl_value_lookup_string(args, "bird");
+  auto *bird_it = fl_value_lookup_string(args, "bird");
+  std::string bird = static_cast<std::string>(std::get<std::string>((bird_it)));
+
 
   if (strcmp(bird, "Sparrow") == 0) {
   g_autoptr(FlValue) res = fl_value_new_list();
