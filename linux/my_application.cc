@@ -15,6 +15,22 @@ struct _MyApplication {
 
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 
+static void battery_method_call_handler(FlMethodChannel* channel,
+                                        FlMethodCall* method_call,
+                                        gpointer user_data) {
+  g_autoptr(FlMethodResponse) response = nullptr;
+  if (strcmp(fl_method_call_get_name(method_call), "getBirdsList") == 0) {
+    response = get_battery_level();
+  } else {
+    response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
+  }
+
+  g_autoptr(GError) error = nullptr;
+  if (!fl_method_call_respond(method_call, response, &error)) {
+    g_warning("Failed to send response: %s", error->message);
+  }
+}
+
 // Implements GApplication::activate.
 static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
@@ -64,7 +80,8 @@ static void my_application_activate(GApplication* application) {
   self->channel = fl_method_channel_new(
       fl_engine_get_binary_messenger(fl_view_get_engine(view)),
       "example.com/gomobileNative", FL_METHOD_CODEC(codec));
-  
+  fl_method_channel_set_method_call_handler(
+      self->channel, battery_method_call_handler, self, nullptr);
 
   gtk_widget_grab_focus(GTK_WIDGET(self->view));
 }
