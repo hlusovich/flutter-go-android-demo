@@ -77,7 +77,7 @@ static void method_call_cb(FlMethodChannel *channel,
   g_autoptr(FlValue) res = fl_value_new_list();
   int n = sizeof(value);
   int i;
-  for (i = 0; i < n; i++) {
+  for (i = 0; i < n - 1; i++) {
    fl_value_append_take(res, fl_value_new_int(value[i]));
   }
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
@@ -91,7 +91,7 @@ static void method_call_cb(FlMethodChannel *channel,
   g_autoptr(FlValue) res = fl_value_new_list();
   int n = sizeof(value);
   int i;
-  for (i = 0; i < n; i++) {
+  for (i = 0; i < n - 1; i++) {
    fl_value_append_take(res, fl_value_new_int(value[i]));
   }
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
@@ -106,7 +106,7 @@ static void method_call_cb(FlMethodChannel *channel,
   int n = sizeof(value);
   int i;
 
-  for (i = 0; i < n; i++) {
+  for (i = 0; i < n - 1; i++) {
    fl_value_append_take(res, fl_value_new_int(value[i]));
   }
   g_autoptr(FlMethodResponse) response = FL_METHOD_RESPONSE(fl_method_success_response_new(res));
